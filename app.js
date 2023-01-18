@@ -11,7 +11,7 @@ app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
-
+mongoose.set('strictQuery',true);
 mongoose.connect("mongodb+srv://kuyoke:Test-123@cluster0.afe1rd9.mongodb.net/todolistDB", {useNewUrlParser : true});
 
 const itemsSchema = ({
@@ -133,7 +133,7 @@ app.get("/about", function(req, res){
   res.render("about");
 });
 let port = process.env.PORT;
-if(port == null !! port ==""){
+if(port == null || port ==""){
   port = 3000;
 }
 
